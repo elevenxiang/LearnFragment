@@ -57,6 +57,13 @@ public class MainFragment extends Fragment {
                 startActivity(new Intent(getActivity(), SliderActivity.class));
             }
         });
+
+        rootView.findViewById(R.id.btnStartTabbedActivity).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), TabbedActivity.class));
+            }
+        });
         return rootView;
     }
 
