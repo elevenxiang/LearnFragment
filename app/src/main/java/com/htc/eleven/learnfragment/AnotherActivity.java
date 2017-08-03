@@ -4,14 +4,20 @@ import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class AnotherActivity extends AppCompatActivity {
 
+    private Button back;
+    private EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_another);
+
 
         TextView tv = (TextView) findViewById(R.id.showArgs);
 
@@ -28,9 +34,25 @@ public class AnotherActivity extends AppCompatActivity {
 
         } else {
             UserData data = (UserData) intent.getParcelableExtra("bundle_data");
-
-            System.out.println(" here we got Parcelable data !");
-            tv.setText(String.format("we got user (name = %s, sex = %s, age = %d)", data.getName(), data.getSex(), data.getAge()));
+            if (data != null) {
+                System.out.println(" here we got Parcelable data !");
+                tv.setText(String.format("we got user (name = %s, sex = %s, age = %d)", data.getName(), data.getSex(), data.getAge()));
+            }
         }
+
+
+        editText = (EditText) findViewById(R.id.editText);
+
+        back = (Button) findViewById(R.id.btnSendBack);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent();
+                i.putExtra("back_data", editText.getText().toString());
+
+                setResult(0,i);
+                finish();
+            }
+        });
     }
 }

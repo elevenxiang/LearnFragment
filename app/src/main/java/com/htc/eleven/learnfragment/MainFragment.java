@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.net.URL;
 
@@ -23,6 +24,7 @@ public class MainFragment extends Fragment {
 
     public static Button anotherFragmentButton = null;
 
+    private TextView textView;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,7 +114,8 @@ public class MainFragment extends Fragment {
 
                 i.putExtra("data", "这是来自前一个 Activity 的参数 !");
 
-                startActivity(i);
+//                startActivity(i);
+                startActivityForResult(i, 1);
             }
         });
 
@@ -138,10 +141,29 @@ public class MainFragment extends Fragment {
 
                 i.putExtra("bundle_data", new UserData("eleven", "Male", 30));
 
-                startActivity(i);
+                startActivityForResult(i, 1);
+            }
+        });
+
+        textView = rootView.findViewById(R.id.textView_showResult);
+        rootView.findViewById(R.id.btnStartAnotherActivityNeedCheckResult).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AnotherActivity.class);
+
+                startActivityForResult(i, 1);
             }
         });
         return rootView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(data != null) {
+            textView.setText("另外一个AnotherActivity 返回的结果: " + data.getStringExtra("back_data"));
+        }
     }
 
     @Override
