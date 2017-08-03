@@ -1,6 +1,7 @@
 package com.htc.eleven.learnfragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import java.net.URL;
 
 /**
  * Created by eleven on 17-8-2.
@@ -62,6 +65,42 @@ public class MainFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), TabbedActivity.class));
+            }
+        });
+
+        rootView.findViewById(R.id.btnPhoneCall).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("tel:13917203200")));
+            }
+        });
+
+        rootView.findViewById(R.id.btnOpenWebSite).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.sina.com.cn")));
+            }
+        });
+
+        rootView.findViewById(R.id.btnSendMessage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("smsto:13917203200");
+                Intent it = new Intent(Intent.ACTION_SENDTO, uri);
+                it.putExtra("sms_body", "今天加班,晚点回家 ~");
+                startActivity(it);
+            }
+        });
+
+        rootView.findViewById(R.id.btnPlayLocalVideo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(Intent.ACTION_VIEW);
+                String type = "video/mp4";
+                Uri uri = Uri.parse("content:///sdcard/Movies/CtsTest720p.mp4");
+
+                it.setDataAndType(uri,type);
+                startActivity(it);
             }
         });
         return rootView;

@@ -29,4 +29,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="启动有Tabbed的Activity" />
+
+    <Button
+        android:id="@+id/btnPhoneCall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打电话给 eleven" />
+
+    <Button
+        android:id="@+id/btnOpenWebSite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开网页" />
+
+    <Button
+        android:id="@+id/btnSendMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送短信" />
+
+    <Button
+        android:id="@+id/btnPlayLocalVideo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="播放本地视频" />
 </LinearLayout>
