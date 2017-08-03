@@ -130,6 +130,17 @@ public class MainFragment extends Fragment {
                 startActivity(i);
             }
         });
+
+        rootView.findViewById(R.id.btnStartAnotherActivityWithCustomizedObject).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AnotherActivity.class);
+
+                i.putExtra("bundle_data", new UserData("eleven", "Male", 30));
+
+                startActivity(i);
+            }
+        });
         return rootView;
     }
 

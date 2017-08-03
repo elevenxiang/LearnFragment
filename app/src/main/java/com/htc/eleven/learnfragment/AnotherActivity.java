@@ -1,6 +1,7 @@
 package com.htc.eleven.learnfragment;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -18,12 +19,18 @@ public class AnotherActivity extends AppCompatActivity {
         if(intent.getStringExtra("data") != null) {
             System.out.println(" here we got string args");
             tv.setText(intent.getStringExtra("data"));
+//        } else if ((Bundle)intent.getExtras() != null){
+//
+//            Bundle bundle = intent.getExtras();
+//            System.out.println(" here we got Bundle args !" + bundle.getString("name"));
+//
+//            tv.setText(String.format("we got name = %s, age = %d !", bundle.getString("name"), bundle.getInt("age")));
+
         } else {
-            System.out.println(" here we got Bundle args !");
-            Bundle bundle = intent.getExtras();
+            UserData data = (UserData) intent.getParcelableExtra("bundle_data");
 
-            tv.setText(String.format("we got name = %s, age = %d !", bundle.getString("name"), bundle.getInt("age")));
-
+            System.out.println(" here we got Parcelable data !");
+            tv.setText(String.format("we got user (name = %s, sex = %s, age = %d)", data.getName(), data.getSex(), data.getAge()));
         }
     }
 }

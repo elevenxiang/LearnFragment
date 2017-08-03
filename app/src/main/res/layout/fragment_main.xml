@@ -65,4 +65,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="传递Bundle参数启动另一个Activity" />
+
+    <Button
+        android:id="@+id/btnStartAnotherActivityWithCustomizedObject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="传递自定义值对象参数启动另一个Activity" />
 </LinearLayout>
