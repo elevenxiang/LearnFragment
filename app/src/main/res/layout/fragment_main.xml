@@ -53,4 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="播放本地视频" />
+
+    <Button
+        android:id="@+id/btnStartAnotherActivityWithArgs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="传递参数启动另一个Activity" />
 </LinearLayout>

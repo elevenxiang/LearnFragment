@@ -103,6 +103,17 @@ public class MainFragment extends Fragment {
                 startActivity(it);
             }
         });
+
+        rootView.findViewById(R.id.btnStartAnotherActivityWithArgs).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AnotherActivity.class);
+
+                i.putExtra("data", "这是来自前一个 Activity 的参数 !");
+
+                startActivity(i);
+            }
+        });
         return rootView;
     }
 
