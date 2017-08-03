@@ -12,9 +12,18 @@ public class AnotherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_another);
 
-        Intent intent = getIntent();
         TextView tv = (TextView) findViewById(R.id.showArgs);
 
-        tv.setText(intent.getStringExtra("data"));
+        Intent intent = getIntent();
+        if(intent.getStringExtra("data") != null) {
+            System.out.println(" here we got string args");
+            tv.setText(intent.getStringExtra("data"));
+        } else {
+            System.out.println(" here we got Bundle args !");
+            Bundle bundle = intent.getExtras();
+
+            tv.setText(String.format("we got name = %s, age = %d !", bundle.getString("name"), bundle.getInt("age")));
+
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -110,6 +111,21 @@ public class MainFragment extends Fragment {
                 Intent i = new Intent(getActivity(), AnotherActivity.class);
 
                 i.putExtra("data", "这是来自前一个 Activity 的参数 !");
+
+                startActivity(i);
+            }
+        });
+
+        rootView.findViewById(R.id.btnStartAnotherActivityWithBundleArgs).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), AnotherActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("name", "eleven");
+                bundle.putInt("age", 30);
+
+                i.putExtras(bundle);
 
                 startActivity(i);
             }
